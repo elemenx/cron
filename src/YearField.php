@@ -10,14 +10,14 @@ use DateTimeInterface;
  *
  * @author Michael Dowling <mtdowling@gmail.com>
  */
-class SecondsField extends AbstractField
+class YearField extends AbstractField
 {
     /**
      * {@inheritdoc}
      */
     public function isSatisfiedBy(DateTimeInterface $date, $value)
     {
-        return $this->isSatisfied($date->format('s'), $value);
+        return $this->isSatisfied($date->format('Y'), $value);
     }
 
     /**
@@ -26,9 +26,13 @@ class SecondsField extends AbstractField
     public function increment(DateTimeInterface &$date, $invert = false)
     {
         if ($invert) {
-            $date->modify('-1 second');
+            $date->modify('-1 year');
+            $date->setDate($date->format('Y'), 12, 31);
+            $date->setTime(23, 59, 0);
         } else {
-            $date->modify('+1 second');
+            $date->modify('+1 year');
+            $date->setDate($date->format('Y'), 1, 1);
+            $date->setTime(0, 0, 0);
         }
 
         return $this;

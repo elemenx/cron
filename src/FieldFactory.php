@@ -1,17 +1,15 @@
 <?php
 
-namespace G4\Cron;
+namespace Elemenx\Cron;
 
 use InvalidArgumentException;
-
-use G4\Cron\SecondsField;
-
+use Elemenx\Cron\SecondsField;
 use Cron\MinutesField;
 use Cron\HoursField;
 use Cron\DayOfMonthField;
 use Cron\MonthField;
 use Cron\DayOfWeekField;
-use Cron\YearField;
+use Elemenx\Cron\YearField;
 
 class FieldFactory extends \Cron\FieldFactory
 {
