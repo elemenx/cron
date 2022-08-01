@@ -17,6 +17,10 @@ class YearField extends AbstractField
      */
     public function isSatisfiedBy(DateTimeInterface $date, $value)
     {
+        if ($value == '?') {
+            return true;
+        }
+
         return $this->isSatisfied($date->format('Y'), $value);
     }
 
